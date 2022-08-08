@@ -1,4 +1,5 @@
 import request from '../utils/request';
+import qs from 'qs';
 //所有的向api的请求在这里写
 //fetchData是以query为参数的函数，将请求参数作为参数，返回请求api的结果
 export const fetchData = query => {

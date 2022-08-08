@@ -1,7 +1,7 @@
 <template>
     <div class="login-wrap">
         <div class="ms-login">
-            <div class="ms-title">ZRK电影院会员管理系统</div>
+            <div class="ms-title">LTC电影院会员管理系统</div>
             <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
                 <el-form-item prop="username">
                     <el-input v-model="param.managerId" placeholder="managerId">
@@ -21,7 +21,7 @@
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm()">登录</el-button>
                 </div>
-                <p class="login-tips">Tips : 默认账号为admin，密码为123123。</p>
+<!--                <p class="login-tips">Tips : 默认账号为admin，密码为123123。</p>-->
             </el-form>
         </div>
     </div>

@@ -348,6 +348,7 @@
         },
         methods: {
             handleCurrentChange(val){
+                console.log("12345")
                 this.name = val.name;
                 this.memberBirthday = val.birthday;
                 this.query.memberId = val.memberId;
@@ -506,7 +507,8 @@
             },
             //判断当前是否生日
             judgeBirthday(index, row) {
-
+                this.isBirthday = false
+                console.log(this.memberBirthday,"777")
                 let nowDate = this.$moment(new Date()).format('YYYY-MM-DD');
                 if (this.memberBirthday === nowDate) {
                     this.isBirthday = true;
@@ -562,6 +564,7 @@
                 this.getCardData();
             },
             handlememberQueryPageChange(val){
+                console.log("123456")
                 this.$set(this.memberQuery, 'pageIndex', val);
                 this.getMemberData();
             },

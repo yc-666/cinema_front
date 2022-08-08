@@ -116,7 +116,10 @@
 
             //this.openNotify();
         },
-        methods: {
+        mounted() {
+            this.getMemberData();
+        },
+      methods: {
             openNotify() {
                 this.$notify({
                     title: '提示',
@@ -140,7 +143,7 @@
                         let birthday = Date.parse(new Date(m.birthday.replace(/-/g, '/'))); // "2010/08/01";
                         console.log(now,"111")
                         console.log(birthday,"222")
-                        m.instance = parseInt(((now-birthday)/ (1000 * 60 * 60 * 24)));//核心：时间戳相减，然后除以天数
+                        m.instance = parseInt(((birthday - now)/ (1000 * 60 * 60 * 24)) + 1);//核心：时间戳相减，然后除以天数
                     });
                     this.memberData.sort((a,b)=>a.instance-b.instance);
                 });

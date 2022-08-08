@@ -171,7 +171,7 @@
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="editVisible = false">取 消</el-button>
+                <el-button @click="loginVisible = false">取 消</el-button>
                 <el-button type="primary" @click="loginMember">确 定</el-button>
             </span>
         </el-dialog>
@@ -223,7 +223,10 @@
             this.getMemberData();
             //this.openNotify();
         },
-        methods: {
+        mounted() {
+            this.getMemberData();
+        },
+      methods: {
             openNotify() {
                 this.$notify({
                     title: '提示',
