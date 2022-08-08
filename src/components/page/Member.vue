@@ -27,12 +27,12 @@
                 >会员注册
                 </el-button>
                 <!--使用下拉选择菜单来选择搜索条件-->
-                <el-select v-model="query.birthdayQuery" clearable placeholder="按生日查询" class="handle-select mr10">
+                <el-select v-model="query.birthdayQuery" clearable @clear = "handleChange" placeholder="按生日查询" class="handle-select mr10">
                     <el-option key="0" label="当天过生日" value="1"></el-option>
                     <el-option key="2" label="七天内过生日" value="7"></el-option>
                     <el-option key="3" label="十天内过生日" value="10"></el-option>
                 </el-select>
-                <el-input v-model="query.name" clearable placeholder="会员名称查询" class="handle-input mr10"></el-input>
+                <el-input v-model="query.name" clearable @clear = "handleChange" placeholder="会员名称查询" class="handle-input mr10" ></el-input>
                 <a href="javascript:;" @click="handleSearch">查询</a>
                 <el-button type="danger"
                            icon="el-icon-delete"
@@ -221,7 +221,7 @@
         },
         created() {
             this.getMemberData();
-            this.openNotify();
+            //this.openNotify();
         },
         methods: {
             openNotify() {
@@ -231,6 +231,9 @@
                     duration: 0
                 });
             },
+          handleChange() {
+            this.getMemberData();
+          },
             // 开发时，获取 easy-mock 的模拟数据
             // 将query数据作为参数传递给fetchData，在then后面的回调函数中操作数据
             getMemberData() {

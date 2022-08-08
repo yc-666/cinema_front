@@ -62,14 +62,18 @@ export default {
     },
     methods:{
         schart1Data(){
-            getSchart1Data().then(res=>{
-                if(res.status==200){
-                    this.options1.datasets[0].data=res.data.consume;
-                    this.options1.datasets[1].data=res.data.recharge;
-                    this.options1.datasets[2].data=res.data.integral;
-                    this.loading=true;
-                }
-            })
+            this.options1.datasets[0].data=[1000,1200,0,2300,1700]
+            this.options1.datasets[1].data=[1500,1600,1700,1800,3500]
+            this.options1.datasets[2].data=[600,1800,3000,5000,2000]
+            this.loading=true;
+            // getSchart1Data().then(res=>{
+            //     if(res.status==200){
+            //         this.options1.datasets[0].data=res.data.consume;
+            //         this.options1.datasets[1].data=res.data.recharge;
+            //         this.options1.datasets[2].data=res.data.integral;
+            //         this.loading=true;
+            //     }
+            // })
         },
     }
 };

@@ -297,15 +297,17 @@
                 }
             },
             handleDealSearch() {
-                queryRecord(this.query).then(res => {
-                    if (res.status == 200) {
-                        this.recordData = res.data.list;
-                        this.pageTotal = res.data.pageTotal;
-                        this.recordVisible = true;
-                    } else {
-                        this.$message.error("服务器发生故障，请稍后再试");
-                    }
-                })
+              queryRecord(this.query).then(res => {
+                if (res.status == 200) {
+                  this.recordData = res.data.list;
+                  this.pageTotal = res.data.pageTotal;
+                  this.recordVisible = true;
+                }else if(res.status == 400){
+                  this.$message.success("此用户暂无消费记录");
+                }else {
+                  this.$message.error("服务器发生故障，请稍后再试");
+                }
+              })
 
             },
             concelConsume() {

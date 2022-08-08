@@ -20,12 +20,12 @@
         <div class="container">
             <div class="handle-box">
                 <!--使用下拉选择菜单来选择搜索条件-->
-                <el-select v-model="query.birthdayQuery" clearable placeholder="按生日查询" class="handle-select mr10">
+                <el-select v-model="query.birthdayQuery" clearable @clear = "handleChange"  placeholder="按生日查询" class="handle-select mr10">
                     <el-option key="0" label="当天过生日" value="1"></el-option>
                     <el-option key="2" label="七天内过生日" value="7"></el-option>
                     <el-option key="3" label="十天内过生日" value="10"></el-option>
                 </el-select>
-                <el-input v-model="query.name" clearable placeholder="会员名称查询" class="handle-input mr10"></el-input>
+                <el-input v-model="query.name" clearable @clear = "handleChange" placeholder="会员名称查询" class="handle-input mr10"></el-input>
                 <el-button type="primary" icon="el-icon-search" @click="handleSearch">查询</el-button>
             </div>
             <!--绑定memberData变量-->
@@ -114,7 +114,7 @@
         created() {
             this.getMemberData();
 
-            this.openNotify();
+            //this.openNotify();
         },
         methods: {
             openNotify() {
@@ -123,6 +123,9 @@
                     message: '本作业所有密码为123123',
                     duration: 0
                 });
+            },
+            handleChange() {
+              this.getMemberData();
             },
             // 开发时，获取 easy-mock 的模拟数据
             // 将query数据作为参数传递给fetchData，在then后面的回调函数中操作数据
@@ -133,8 +136,11 @@
                     this.memberData.map((m)=>{
                         // 转换日期格式bai
                         var now = Date.parse(new Date());
+                        console.log(m.birthday,"333")
                         let birthday = Date.parse(new Date(m.birthday.replace(/-/g, '/'))); // "2010/08/01";
-                        m.instance = parseInt((now-birthday)/ (1000 * 60 * 60 * 24));//核心：时间戳相减，然后除以天数
+                        console.log(now,"111")
+                        console.log(birthday,"222")
+                        m.instance = parseInt(((now-birthday)/ (1000 * 60 * 60 * 24)));//核心：时间戳相减，然后除以天数
                     });
                     this.memberData.sort((a,b)=>a.instance-b.instance);
                 });
